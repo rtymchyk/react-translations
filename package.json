@@ -1,0 +1,35 @@
+{
+  "name": "react-translations",
+  "version": "0.0.1",
+  "description": "gettext-style translations for React",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtymchyk/react-translations.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Roman Tymchyk <rtymchyk@gmail.com> (http://www.romantymchyk.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rtymchyk/react-translations/issues"
+  },
+  "homepage": "https://github.com/rtymchyk/react-translations#readme",
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "jed": "^1.1.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  }
+}
