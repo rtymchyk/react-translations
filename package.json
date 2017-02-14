@@ -2,9 +2,11 @@
   "name": "react-translations",
   "version": "0.0.1",
   "description": "gettext-style translations for React",
-  "main": "index.js",
+  "main": "built.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register"
+    "test": "mocha",
+    "test-watch": "mocha --watch",
+    "build": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -21,10 +23,18 @@
   "homepage": "https://github.com/rtymchyk/react-translations#readme",
   "devDependencies": {
     "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
+    "babel-preset-stage-3": "^6.22.0",
     "chai": "^3.5.0",
+    "jsdom": "^9.11.0",
     "mocha": "^3.2.0",
+    "react-addons-test-utils": "^15.4.2",
+    "sinon": "^1.17.7",
     "webpack": "^2.2.1"
   },
   "dependencies": {

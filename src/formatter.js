@@ -19,7 +19,7 @@ export function formatString(string, placeholders = {}) {
 
 export function formatReactString(string, placeholders = {}) {
   return (
-    <span>
+    <span className="localized-string">
       {string
         .split(new RegExp('(\{.+?\})', 'g'))
         .filter(node => !!node)
