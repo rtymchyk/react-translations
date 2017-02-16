@@ -1,8 +1,4 @@
 import { getInstance, clearInstance, setMessages } from '../src/translator';
-import chai from 'chai';
-
-const expect = chai.expect;
-const fail = chai.assert.fail;
 
 describe('translator', () => {
   beforeEach(() => {

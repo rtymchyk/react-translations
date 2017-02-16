@@ -1,33 +1,17 @@
 import { getInstance } from './translator';
 
 export function _(id, locale) {
-  return getInstance()
-    .translate(id)
-    .onDomain(locale)
-    .fetch();
+  return getInstance().dgettext(locale, id);
 }
 
 export function _n(id, idPlural, count, locale) {
-  return getInstance()
-    .translate(id)
-    .ifPlural(count, idPlural)
-    .onDomain(locale)
-    .fetch();
+  return getInstance().dngettext(locale, id, idPlural, count);
 }
 
 export function _c(id, context, locale) {
-  return getInstance()
-    .translate(id)
-    .withContext(context)
-    .onDomain(locale)
-    .fetch();
+  return getInstance().dpgettext(locale, context, id);
 }
 
 export function _nc(id, idPlural, count, context, locale) {
-  return getInstance()
-    .translate(id)
-    .withContext(context)
-    .ifPlural(count, idPlural)
-    .onDomain(locale)
-    .fetch();
+  return getInstance().dnpgettext(locale, context, id, idPlural, count);
 }

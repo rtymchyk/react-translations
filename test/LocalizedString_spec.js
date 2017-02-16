@@ -1,12 +1,8 @@
 import React from 'react';
 import LocalizedString from '../src/LocalizedString';
 import TestUtils from 'react-addons-test-utils';
-import chai from 'chai';
-import sinon from 'sinon';
 import { setMessages } from '../src/translator';
 import * as Gettext from '../src/gettext';
-
-const expect = chai.expect;
 
 describe('LocalizedString', () => {
   function render(props, locale = 'en-US') {

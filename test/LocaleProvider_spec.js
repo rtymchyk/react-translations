@@ -1,9 +1,6 @@
 import React from 'react';
 import LocaleProvider from '../src/LocaleProvider';
 import TestUtils from 'react-addons-test-utils';
-import chai from 'chai';
-
-const expect = chai.expect;
 
 class TestComponent extends React.Component {
   render() {

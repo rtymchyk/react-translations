@@ -25,7 +25,11 @@ export function formatReactString(string, placeholders = {}) {
         .filter(node => !!node)
         .map((node, index) => {
           const placeholderKey = node.replace(PLACEHOLDER_REGEX, '');
-          const placeholderValue = placeholders[placeholderKey];
+
+          let placeholderValue = placeholders[placeholderKey];
+          if (typeof placeholderValue === 'function') {
+            placeholderValue = placeholderValue(index);
+          }
 
           if (placeholderValue && React.isValidElement(placeholderValue)) {
             return placeholderValue;

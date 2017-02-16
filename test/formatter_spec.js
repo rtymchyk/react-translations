@@ -1,8 +1,5 @@
 import React from 'react';
 import { formatString, formatReactString } from '../src/formatter';
-import chai from 'chai';
-
-const expect = chai.expect;
 
 describe('formatter', () => {
   describe('#formatString', () => {
@@ -10,11 +7,11 @@ describe('formatter', () => {
       expect(formatString('Hello')).to.equal('Hello');
     });
 
-    it('is no-op for no placeholders', () => {
+    it('is no-op for no placeholder values provided', () => {
       expect(formatString('Hello {name}')).to.equal('Hello {name}');
     });
 
-    it('is no-op for placeholder not appearing', () => {
+    it('is no-op for placeholder values not appearing in string', () => {
       expect(formatString('Hello {name}', { nameTwo: 'Bob' })).to.equal('Hello {name}');
     });
 
@@ -48,12 +45,12 @@ describe('formatter', () => {
       })).to.equal('Bob, items are: {one}, {two}, {three}');
     });
 
-    it('allows 0 as a valid placeholder', () => {
+    it('permits 0 as a valid placeholder', () => {
       expect(formatString('You got {numItems} items!', { numItems: 0 })).to.equal(
         'You got 0 items!')
     });
 
-    it('allows emoji as a valid placeholder', () => {
+    it('permits emoji as a valid placeholder', () => {
       expect(formatString('Nice {emoji}!', { emoji: '🚗' })).to.equal('Nice 🚗!');
     });
 
@@ -62,12 +59,12 @@ describe('formatter', () => {
         'You got 5 items!');
     });
 
-    it('allows $ as part of placeholder', () => {
+    it('permits $ as part of placeholder', () => {
       expect(formatString('You have {amount} in the wallet', { amount: 'US$0' }))
         .to.equal('You have US$0 in the wallet');
     });
 
-    it('filters out React placeholders', () => {
+    it('ignores React placeholder values', () => {
       expect(formatString('{name} has {amount} in the wallet', {
         name: 'Bob',
         amount: <span>{'US$0'}</span>,
@@ -80,7 +77,7 @@ describe('formatter', () => {
       expect(formatReactString('Hello').props.children).to.deep.equal(['Hello']);
     });
 
-    it('is no-op for no placeholders', () => {
+    it('is no-op for no placeholder values provided', () => {
       const result = formatReactString('Hello {name}');
 
       expect(result.type).to.equal('span');
@@ -90,7 +87,7 @@ describe('formatter', () => {
       ]);
     });
 
-    it('is no-op for placeholder not appearing', () => {
+    it('is no-op for placeholder values not appearing in string', () => {
       const result = formatReactString('Hello {name}', {
         nameTwo: <span>Bob</span>,
       });
@@ -162,7 +159,7 @@ describe('formatter', () => {
       ]);
     });
 
-    it('ignores out non-React placeholders', () => {
+    it('ignores non-React placeholders', () => {
       const result = formatReactString('Hello {name} and {nameTwo}', {
         name: 'Bob',
         nameTwo: <span>Joe</span>,
@@ -175,6 +172,28 @@ describe('formatter', () => {
         ' and ',
         <span>Joe</span>,
       ]);
+    });
+
+    it('permits functions that evaluate to React elements', () => {
+      const result = formatReactString('{name} & {name}', {
+        name: (index) => <span key={index}>Bob</span>,
+      });
+
+      expect(result.type).to.equal('span');
+      expect(result.props.children).to.deep.equal([
+        <span key={0}>Bob</span>,
+        ' & ',
+        <span key={2}>Bob</span>,
+      ]);
+    });
+
+    it('ignores functions that do not evaluate to React elements', () => {
+      const result = formatReactString('{name} & {name}', {
+        name: (index) => 'Hello',
+      });
+
+      expect(result.type).to.equal('span');
+      expect(result.props.children).to.deep.equal(['{name}', ' & ', '{name}']);
     });
   });
 });
