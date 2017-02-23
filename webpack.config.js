@@ -20,7 +20,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             plugins: [
-              'babel-plugin-syntax-export-extensions',
+              'syntax-export-extensions',
               'transform-object-rest-spread'
             ],
             presets: ['es2015', 'react']
