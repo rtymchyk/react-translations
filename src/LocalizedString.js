@@ -31,11 +31,11 @@ const LocalizedString = (props, { locale }) => {
       }
     }
 
-    return '';
+    throw new Error('LocalizedString is missing an id prop!');
   }
 
   return formatReactString(
-    formatString(translate(), placeholders), placeholders);
+    formatString(translate(), placeholders), className, placeholders);
 }
 
 LocalizedString.displayName = 'LocalizedString';
