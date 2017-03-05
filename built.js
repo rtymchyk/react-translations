@@ -253,7 +253,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-var LocalizedString = function LocalizedString(props, _ref) {
+var Message = function Message(props, _ref) {
   var locale = _ref.locale;
 
   var id = props.id,
@@ -286,23 +286,23 @@ var LocalizedString = function LocalizedString(props, _ref) {
       return (0, _gettext._)(id)(locale);
     }
 
-    throw new Error('LocalizedString is missing an id and an i18n prop!');
+    throw new Error('Message is missing an id and an i18n prop!');
   }
 
   return (0, _formatter.formatReactString)((0, _formatter.formatString)(translate(), placeholders), className, placeholders);
 };
 
-LocalizedString.displayName = 'LocalizedString';
+Message.displayName = 'Message';
 
-LocalizedString.propTypes = {
+Message.propTypes = {
   id: _react2.default.PropTypes.string.isRequired
 };
 
-LocalizedString.contextTypes = {
+Message.contextTypes = {
   locale: _react2.default.PropTypes.string
 };
 
-exports.default = LocalizedString;
+exports.default = Message;
 
 /***/ }),
 /* 5 */
@@ -383,9 +383,9 @@ module.exports = require("jed");
 "use strict";
 
 
-var _LocalizedString = __webpack_require__(4);
+var _Message = __webpack_require__(4);
 
-var _LocalizedString2 = _interopRequireDefault(_LocalizedString);
+var _Message2 = _interopRequireDefault(_Message);
 
 var _LocaleProvider = __webpack_require__(3);
 
@@ -398,7 +398,7 @@ var _gettext = __webpack_require__(1);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 module.exports = {
-  LocalizedString: _LocalizedString2.default,
+  Message: _Message2.default,
   LocaleProvider: _LocaleProvider2.default,
   setMessages: _translator.setMessages,
   _: _gettext._,

@@ -2,7 +2,7 @@ import React from 'react';
 import { _, _c, _n, _nc } from './gettext';
 import { formatString, formatReactString } from './formatter';
 
-const LocalizedString = (props, { locale }) => {
+const Message = (props, { locale }) => {
   const {
     id,
     idPlural,
@@ -35,21 +35,21 @@ const LocalizedString = (props, { locale }) => {
       return _(id)(locale);
     }
 
-    throw new Error('LocalizedString is missing an id and an i18n prop!');
+    throw new Error('Message is missing an id and an i18n prop!');
   }
 
   return formatReactString(
     formatString(translate(), placeholders), className, placeholders);
 };
 
-LocalizedString.displayName = 'LocalizedString';
+Message.displayName = 'Message';
 
-LocalizedString.propTypes = {
+Message.propTypes = {
   id: React.PropTypes.string.isRequired,
 };
 
-LocalizedString.contextTypes = {
+Message.contextTypes = {
   locale: React.PropTypes.string,
 };
 
-export default LocalizedString;
+export default Message;

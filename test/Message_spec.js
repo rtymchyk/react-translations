@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import LocalizedString from '../src/LocalizedString';
+import Message from '../src/Message';
 import { setMessages } from '../src/translator';
 import * as Gettext from '../src/gettext';
 
-describe('LocalizedString', () => {
+describe('Message', () => {
   const defaultLocale = 'en-US';
 
   function render(props, locale = defaultLocale) {
-    return shallow(<LocalizedString {...props} />, { context: { locale } });
+    return shallow(<Message {...props} />, { context: { locale } });
   }
 
   beforeEach(() => {
@@ -94,7 +94,7 @@ describe('LocalizedString', () => {
       render();
       fail();
     } catch (e) {
-      expect(e.message).to.equal('LocalizedString is missing an id and an i18n prop!');
+      expect(e.message).to.equal('Message is missing an id and an i18n prop!');
     }
   });
 });
