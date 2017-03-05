@@ -295,7 +295,11 @@ var Message = function Message(props, _ref) {
 Message.displayName = 'Message';
 
 Message.propTypes = {
-  id: _react2.default.PropTypes.string.isRequired
+  id: _react2.default.PropTypes.string,
+  idPlural: _react2.default.PropTypes.string,
+  count: _react2.default.PropTypes.number,
+  context: _react2.default.PropTypes.string,
+  i18n: _react2.default.PropTypes.func
 };
 
 Message.contextTypes = {

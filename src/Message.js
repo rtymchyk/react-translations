@@ -45,7 +45,11 @@ const Message = (props, { locale }) => {
 Message.displayName = 'Message';
 
 Message.propTypes = {
-  id: React.PropTypes.string.isRequired,
+  id: React.PropTypes.string,
+  idPlural: React.PropTypes.string,
+  count: React.PropTypes.number,
+  context: React.PropTypes.string,
+  i18n: React.PropTypes.func,
 };
 
 Message.contextTypes = {
