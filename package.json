@@ -15,6 +15,9 @@
   "keywords": [
     "react"
   ],
+  "files": [
+    "built.js"
+  ],
   "author": "Roman Tymchyk <rtymchyk@gmail.com> (http://www.romantymchyk.com)",
   "license": "MIT",
   "bugs": {
