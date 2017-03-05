@@ -5,7 +5,9 @@ import { setMessages } from '../src/translator';
 import * as Gettext from '../src/gettext';
 
 describe('LocalizedString', () => {
-  function render(props, locale = 'en-US') {
+  const defaultLocale = 'en-US';
+
+  function render(props, locale = defaultLocale) {
     const renderer = TestUtils.createRenderer();
     renderer.render(<LocalizedString {...props}/>, { locale });
 
@@ -23,13 +25,13 @@ describe('LocalizedString', () => {
   it('invokes gettext as singular', () => {
     const output = render({ id: 'Hello' });
 
-    expect(Gettext._.calledWith('Hello', 'en-US')).to.equal(true);
+    expect(Gettext._.calledWith('Hello')).to.equal(true);
   });
 
   it('invokes gettext as plural', () => {
     const output = render({ id: 'One', idPlural: 'Many', count: 5 });
 
-    expect(Gettext._n.calledWith('One', 'Many', 5, 'en-US')).to.equal(true);
+    expect(Gettext._n.calledWith('One', 'Many', 5)).to.equal(true);
   });
 
   it('invokes gettext as singular with context', () => {
@@ -43,9 +45,29 @@ describe('LocalizedString', () => {
       id: 'One', idPlural: 'Many', count: 5, context: 'Context',
     });
 
-    expect(Gettext._nc.calledWith('One', 'Many', 5, 'Context', 'en-US'))
-      .to.equal(true);
+    expect(Gettext._nc.calledWith('One', 'Many', 5, 'Context')) .to.equal(true);
   });
+
+  it('invokes shortform prop with locale', () => {
+    const i18nStub = sinon.spy(Gettext._('Hello'))
+    const output = render({
+      i18n: i18nStub,
+    });
+
+    expect(i18nStub.calledWith(defaultLocale)).to.equal(true)
+  })
+
+  it('ignores other props if given shortform', () => {
+    const i18nStub = sinon.spy(Gettext._('Hello'))
+    const output = render({
+      i18n: i18nStub,
+      id: 'One',
+      idPlural: 'Many'
+    });
+
+    expect(i18nStub.calledWith(defaultLocale)).to.equal(true)
+    expect(Gettext._n.calledWith('Hello', 'Many')).to.equal(false)
+  })
 
   it('formats regular placeholders', () => {
     const output = render({ id: 'Hello {name}', name: 'Bob' });
@@ -76,12 +98,12 @@ describe('LocalizedString', () => {
     ]);
   });
 
-  it('throws error if missing an id prop', () => {
+  it('throws error if missing an id or i18n prop', () => {
     try {
       const output = render();
       fail();
     } catch (e) {
-      expect(e.message).to.equal('LocalizedString is missing an id prop!');
+      expect(e.message).to.equal('LocalizedString is missing an id and an i18n prop!');
     }
   });
 });
