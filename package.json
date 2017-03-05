@@ -24,6 +24,7 @@
   "devDependencies": {
     "babel-core": "^6.22.1",
     "babel-eslint": "^6.1.2",
+    "babel-extract-gettext": "^0.1.0",
     "babel-loader": "^6.2.10",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-syntax-export-extensions": "^6.13.0",
