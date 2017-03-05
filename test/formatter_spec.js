@@ -47,7 +47,7 @@ describe('formatter', () => {
 
     it('permits 0 as a valid placeholder', () => {
       expect(formatString('You got {numItems} items!', { numItems: 0 })).to.equal(
-        'You got 0 items!')
+        'You got 0 items!');
     });
 
     it('permits emoji as a valid placeholder', () => {
@@ -170,7 +170,7 @@ describe('formatter', () => {
 
     it('permits functions that evaluate to React elements', () => {
       const result = formatReactString('{name} & {name}', '', {
-        name: (index) => <span key={index}>Bob</span>,
+        name: index => <span key={index}>Bob</span>,
       });
 
       expect(result.props.children).to.deep.equal([
@@ -182,7 +182,7 @@ describe('formatter', () => {
 
     it('ignores functions that do not evaluate to React elements', () => {
       const result = formatReactString('{name} & {name}', '', {
-        name: (index) => 'Hello',
+        name: () => 'Hello',
       });
 
       expect(result.props.children).to.deep.equal(['{name}', ' & ', '{name}']);

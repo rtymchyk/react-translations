@@ -1,26 +1,20 @@
 import React from 'react';
+import { mount } from 'enzyme';
 import LocaleProvider from '../src/LocaleProvider';
-import TestUtils from 'react-addons-test-utils';
 
-class TestComponent extends React.Component {
-  render() {
-    return <div>{this.context.locale}</div>;
-  }
-}
-
+const TestComponent = (props, { locale }) => <div>{locale}</div>;
 TestComponent.contextTypes = {
   locale: React.PropTypes.string.isRequired,
 };
 
 describe('LocaleProvider', () => {
   it('provides locale in the context of child component', () => {
-    const tree = TestUtils.renderIntoDocument(
+    const root = mount(
       <LocaleProvider locale="fr-FR">
-        <TestComponent/>
+        <TestComponent />
       </LocaleProvider>
     );
 
-    const child = TestUtils.findRenderedComponentWithType(tree, TestComponent);
-    expect(child.context.locale).to.equal("fr-FR");
+    expect(root.find(TestComponent).text()).to.equal('fr-FR');
   });
 });

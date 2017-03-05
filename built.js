@@ -90,20 +90,28 @@ exports._nc = _nc;
 
 var _translator = __webpack_require__(2);
 
-function _(id, locale) {
-  return (0, _translator.getInstance)().dgettext(locale, id);
+function _(id) {
+  return function (locale) {
+    return (0, _translator.getInstance)().dgettext(locale, id);
+  };
 }
 
-function _n(id, idPlural, count, locale) {
-  return (0, _translator.getInstance)().dngettext(locale, id, idPlural, count);
+function _n(id, idPlural, count) {
+  return function (locale) {
+    return (0, _translator.getInstance)().dngettext(locale, id, idPlural, count);
+  };
 }
 
-function _c(id, context, locale) {
-  return (0, _translator.getInstance)().dpgettext(locale, context, id);
+function _c(id, context) {
+  return function (locale) {
+    return (0, _translator.getInstance)().dpgettext(locale, context, id);
+  };
 }
 
-function _nc(id, idPlural, count, context, locale) {
-  return (0, _translator.getInstance)().dnpgettext(locale, context, id, idPlural, count);
+function _nc(id, idPlural, count, context) {
+  return function (locale) {
+    return (0, _translator.getInstance)().dnpgettext(locale, context, id, idPlural, count);
+  };
 }
 
 /***/ }),
@@ -214,7 +222,8 @@ exports.default = LocaleProvider;
 LocaleProvider.displayName = 'LocaleProvider';
 
 LocaleProvider.propTypes = {
-  locale: _react2.default.PropTypes.string.isRequired
+  locale: _react2.default.PropTypes.string.isRequired,
+  children: _react2.default.PropTypes.node
 };
 
 LocaleProvider.childContextTypes = {
@@ -254,26 +263,30 @@ var LocalizedString = function LocalizedString(props, _ref) {
       count = props.count,
       children = props.children,
       className = props.className,
-      placeholders = _objectWithoutProperties(props, ['id', 'idPlural', 'comment', 'context', 'count', 'children', 'className']);
+      i18n = props.i18n,
+      placeholders = _objectWithoutProperties(props, ['id', 'idPlural', 'comment', 'context', 'count', 'children', 'className', 'i18n']);
 
   function translate() {
+    if (i18n) {
+      return i18n(locale);
+    }
+
     if (id) {
       if (idPlural) {
         if (context) {
-          return (0, _gettext._nc)(id, idPlural, count, context, locale);
-        } else {
-          return (0, _gettext._n)(id, idPlural, count, locale);
+          return (0, _gettext._nc)(id, idPlural, count, context)(locale);
         }
+        return (0, _gettext._n)(id, idPlural, count)(locale);
       }
 
       if (context) {
-        return (0, _gettext._c)(id, context, locale);
-      } else {
-        return (0, _gettext._)(id, locale);
+        return (0, _gettext._c)(id, context)(locale);
       }
+
+      return (0, _gettext._)(id)(locale);
     }
 
-    throw new Error('LocalizedString is missing an id prop!');
+    throw new Error('LocalizedString is missing an id and an i18n prop!');
   }
 
   return (0, _formatter.formatReactString)((0, _formatter.formatString)(translate(), placeholders), className, placeholders);
@@ -315,19 +328,21 @@ var PLACEHOLDER_REGEX = new RegExp('[{}]', 'g');
 function formatString(string) {
   var placeholders = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
+  var builtString = string;
+
   Object.keys(placeholders).forEach(function (placeholderKey) {
     var placeholderValue = placeholders[placeholderKey];
 
     if (placeholderValue || placeholderValue === 0) {
       if (!_react2.default.isValidElement(placeholderValue)) {
-        string = string.replace(new RegExp('{' + placeholderKey + '}', 'g'), function () {
+        builtString = builtString.replace(new RegExp('{' + placeholderKey + '}', 'g'), function () {
           return placeholders[placeholderKey];
         });
       }
     }
   });
 
-  return string;
+  return builtString;
 }
 
 function formatReactString(string, className) {
@@ -336,7 +351,7 @@ function formatReactString(string, className) {
   return _react2.default.createElement(
     'span',
     { className: 'localized-string ' + (className || '') },
-    string.split(new RegExp('(\{.+?\})', 'g')).filter(function (node) {
+    string.split(new RegExp('({.+?})', 'g')).filter(function (node) {
       return !!node;
     }).map(function (node, index) {
       var placeholderKey = node.replace(PLACEHOLDER_REGEX, '');

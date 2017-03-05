@@ -6,21 +6,21 @@ describe('gettext', () => {
     setMessages({
       domain: 'fr',
       locale_data: {
-        'fr': {
+        fr: {
           '': {
-            'domain': 'fr',
-            'lang': 'fr',
+            domain: 'fr',
+            lang: 'fr',
             'plural-forms': 'nplurals=2; plural=(n != 1);',
           },
-          'Hello': ['Bonjour'],
-          'One': ['Un', 'Beaucoup'],
+          Hello: ['Bonjour'],
+          One: ['Un', 'Beaucoup'],
           'Context\u0004Hello': ['Bonjour2'],
           'Context\u0004One': ['Un2', 'Beaucoup2'],
         },
         'en-US': {
           '': {
-            'domain': 'en-US',
-            'lang': 'en-US',
+            domain: 'en-US',
+            lang: 'en-US',
             'plural-forms': 'nplurals=2; plural=(n != 1);',
           },
         }
@@ -36,8 +36,8 @@ describe('gettext', () => {
 
   describe('#_', () => {
     it('returns a function', () => {
-      expect(_('Hello') instanceof Function).to.equal(true)
-    })
+      expect(_('Hello') instanceof Function).to.equal(true);
+    });
 
     it('delegates to Jed when evaluated', () => {
       const result = _('Hello')('fr');
@@ -49,8 +49,8 @@ describe('gettext', () => {
 
   describe('#_c', () => {
     it('returns a function', () => {
-      expect(_c('Hello', 'Context') instanceof Function).to.equal(true)
-    })
+      expect(_c('Hello', 'Context') instanceof Function).to.equal(true);
+    });
 
     it('delegates to Jed when evaluated', () => {
       const result = _c('Hello', 'Context')('fr');
@@ -63,8 +63,8 @@ describe('gettext', () => {
 
   describe('#_n', () => {
     it('returns a function', () => {
-      expect(_n('One', 'Many', 1) instanceof Function).to.equal(true)
-    })
+      expect(_n('One', 'Many', 1) instanceof Function).to.equal(true);
+    });
 
     it('delegates to Jed when evaluated', () => {
       const result = _n('One', 'Many', 1)('fr');
@@ -81,8 +81,8 @@ describe('gettext', () => {
 
   describe('#_nc', () => {
     it('returns a function', () => {
-      expect(_nc('One', 'Many', 1, 'Context') instanceof Function).to.equal(true)
-    })
+      expect(_nc('One', 'Many', 1, 'Context') instanceof Function).to.equal(true);
+    });
 
     it('delegates to Jed when evaluated', () => {
       const result = _nc('One', 'Many', 1, 'Context')('fr');

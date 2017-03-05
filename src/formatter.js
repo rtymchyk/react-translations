@@ -3,25 +3,27 @@ import React from 'react';
 const PLACEHOLDER_REGEX = new RegExp('[{}]', 'g');
 
 export function formatString(string, placeholders = {}) {
-  Object.keys(placeholders).forEach(placeholderKey => {
+  let builtString = string;
+
+  Object.keys(placeholders).forEach((placeholderKey) => {
     const placeholderValue = placeholders[placeholderKey];
 
     if (placeholderValue || placeholderValue === 0) {
       if (!React.isValidElement(placeholderValue)) {
-        string = string.replace(new RegExp(`\{${placeholderKey}\}`, 'g'),
+        builtString = builtString.replace(new RegExp(`{${placeholderKey}}`, 'g'),
           () => placeholders[placeholderKey]);
       }
     }
   });
 
-  return string;
+  return builtString;
 }
 
 export function formatReactString(string, className, placeholders = {}) {
   return (
     <span className={`localized-string ${className || ''}`}>
       {string
-        .split(new RegExp('(\{.+?\})', 'g'))
+        .split(new RegExp('({.+?})', 'g'))
         .filter(node => !!node)
         .map((node, index) => {
           const placeholderKey = node.replace(PLACEHOLDER_REGEX, '');

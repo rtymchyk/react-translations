@@ -15,6 +15,7 @@ LocaleProvider.displayName = 'LocaleProvider';
 
 LocaleProvider.propTypes = {
   locale: React.PropTypes.string.isRequired,
+  children: React.PropTypes.node,
 };
 
 LocaleProvider.childContextTypes = {

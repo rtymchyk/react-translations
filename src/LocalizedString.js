@@ -17,23 +17,22 @@ const LocalizedString = (props, { locale }) => {
 
   function translate() {
     if (i18n) {
-      return i18n(locale)
+      return i18n(locale);
     }
 
     if (id) {
       if (idPlural) {
         if (context) {
-          return _nc(id, idPlural, count, context)(locale)
-        } else {
-          return _n(id, idPlural, count)(locale)
+          return _nc(id, idPlural, count, context)(locale);
         }
+        return _n(id, idPlural, count)(locale);
       }
 
       if (context) {
-        return _c(id, context)(locale)
-      } else {
-        return _(id)(locale)
+        return _c(id, context)(locale);
       }
+
+      return _(id)(locale);
     }
 
     throw new Error('LocalizedString is missing an id and an i18n prop!');
@@ -41,7 +40,7 @@ const LocalizedString = (props, { locale }) => {
 
   return formatReactString(
     formatString(translate(), placeholders), className, placeholders);
-}
+};
 
 LocalizedString.displayName = 'LocalizedString';
 
