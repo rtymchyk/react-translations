@@ -6,12 +6,11 @@
     "it": true,
     "expect": true,
     "beforeEach": true,
-    "before": true,
     "afterEach": true,
-    "after": true,
-    "context": true,
-    "sinon": true,
-    "fail": true,
+    "fail": true
+  },
+  "env": {
+    "jest": true
   },
   "rules": {
     "comma-dangle": ["error", {
@@ -19,8 +18,9 @@
         "objects": "only-multiline",
         "imports": "only-multiline",
         "exports": "only-multiline",
-        "functions": "ignore",
+        "functions": "ignore"
     }],
+    "semi": [2, "never"],
     "react/jsx-filename-extension": ["error", { "extensions": [".js"] }],
     "react/require-default-props": "off",
     "no-underscore-dangle": "off",

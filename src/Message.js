@@ -2,7 +2,7 @@ import React from 'react';
 import { _, _c, _n, _nc } from './gettext';
 import { formatString, formatReactString } from './formatter';
 
-const Message = (props, { locale }) => {
+export default function Message(props, { locale }) {
   const {
     id,
     idPlural,
@@ -35,12 +35,12 @@ const Message = (props, { locale }) => {
       return _(id)(locale);
     }
 
-    throw new Error('Message is missing an id and an i18n prop!');
+    throw new Error('Message has neither id nor i18n as a prop!');
   }
 
   return formatReactString(
     formatString(translate(), placeholders), className, placeholders);
-};
+}
 
 Message.displayName = 'Message';
 
@@ -55,5 +55,3 @@ Message.propTypes = {
 Message.contextTypes = {
   locale: React.PropTypes.string,
 };
-
-export default Message;

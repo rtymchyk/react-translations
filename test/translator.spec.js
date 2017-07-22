@@ -11,7 +11,7 @@ describe('translator', () => {
         getInstance();
         fail();
       } catch (e) {
-        expect(e.message).to.equal(
+        expect(e.message).toEqual(
           'Translator has not been initialized with data');
       }
     });
@@ -21,9 +21,9 @@ describe('translator', () => {
       const instanceOne = getInstance();
       const instanceTwo = getInstance();
 
-      expect(instanceOne).to.not.equal(undefined);
-      expect(instanceTwo).to.not.equal(undefined);
-      expect(instanceOne).to.equal(instanceTwo);
+      expect(instanceOne).not.toEqual(undefined);
+      expect(instanceTwo).not.toEqual(undefined);
+      expect(instanceOne).toEqual(instanceTwo);
     });
   });
 
@@ -35,7 +35,7 @@ describe('translator', () => {
       setMessages({});
       const instanceTwo = getInstance();
 
-      expect(instanceOne).to.not.equal(instanceTwo);
+      expect(instanceOne).not.toBe(instanceTwo);
     });
   });
 });

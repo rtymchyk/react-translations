@@ -4,35 +4,35 @@ import { formatString, formatReactString } from '../src/formatter';
 describe('formatter', () => {
   describe('#formatString', () => {
     it('is no-op for string without placeholders', () => {
-      expect(formatString('Hello')).to.equal('Hello');
+      expect(formatString('Hello')).toEqual('Hello');
     });
 
     it('is no-op for no placeholder values provided', () => {
-      expect(formatString('Hello {name}')).to.equal('Hello {name}');
+      expect(formatString('Hello {name}')).toEqual('Hello {name}');
     });
 
     it('is no-op for placeholder values not appearing in string', () => {
-      expect(formatString('Hello {name}', { nameTwo: 'Bob' })).to.equal('Hello {name}');
+      expect(formatString('Hello {name}', { nameTwo: 'Bob' })).toEqual('Hello {name}');
     });
 
     it('formats 1 placeholder appearing once', () => {
-      expect(formatString('Hello {name}', { name: 'Bob' })).to.equal('Hello Bob');
+      expect(formatString('Hello {name}', { name: 'Bob' })).toEqual('Hello Bob');
     });
 
     it('formats 1 placeholder appearing multiple times', () => {
-      expect(formatString('Hello {name}, are you {name}?', { name: 'Bob' })).to.equal(
+      expect(formatString('Hello {name}, are you {name}?', { name: 'Bob' })).toEqual(
         'Hello Bob, are you Bob?');
     });
 
     it('formats multiple placeholders appearing once', () => {
       expect(formatString('Hello {name}, is that {nameTwo}?', {
         name: 'Bob', nameTwo: 'Joe'
-      })).to.equal('Hello Bob, is that Joe?');
+      })).toEqual('Hello Bob, is that Joe?');
     });
 
     it('formats multiple placeholders appearing multiple times', () => {
       expect(formatString('{name}? {name}! Is that {nameTwo}? Oh it is {nameTwo}!',
-        { name: 'Bob', nameTwo: 'Joe' })).to.equal(
+        { name: 'Bob', nameTwo: 'Joe' })).toEqual(
           'Bob? Bob! Is that Joe? Oh it is Joe!');
     });
 
@@ -42,45 +42,45 @@ describe('formatter', () => {
         one: null,
         two: undefined,
         three: false,
-      })).to.equal('Bob, items are: {one}, {two}, {three}');
+      })).toEqual('Bob, items are: {one}, {two}, {three}');
     });
 
     it('permits 0 as a valid placeholder', () => {
-      expect(formatString('You got {numItems} items!', { numItems: 0 })).to.equal(
+      expect(formatString('You got {numItems} items!', { numItems: 0 })).toEqual(
         'You got 0 items!');
     });
 
     it('permits emoji as a valid placeholder', () => {
-      expect(formatString('Nice {emoji}!', { emoji: '🚗' })).to.equal('Nice 🚗!');
+      expect(formatString('Nice {emoji}!', { emoji: '🚗' })).toEqual('Nice 🚗!');
     });
 
     it('coerces Number placeholder into String', () => {
-      expect(formatString('You got {numItems} items!', { numItems: 5 })).to.equal(
+      expect(formatString('You got {numItems} items!', { numItems: 5 })).toEqual(
         'You got 5 items!');
     });
 
     it('permits $ as part of placeholder', () => {
       expect(formatString('You have {amount} in the wallet', { amount: 'US$0' }))
-        .to.equal('You have US$0 in the wallet');
+        .toEqual('You have US$0 in the wallet');
     });
 
     it('ignores React placeholder values', () => {
       expect(formatString('{name} has {amount} in the wallet', {
         name: 'Bob',
         amount: <span>{'US$0'}</span>,
-      })).to.equal('Bob has {amount} in the wallet');
+      })).toEqual('Bob has {amount} in the wallet');
     });
   });
 
   describe('#formatReactString', () => {
     it('is no-op for string without placeholders', () => {
-      expect(formatReactString('Hello').props.children).to.deep.equal(['Hello']);
+      expect(formatReactString('Hello').props.children).toEqual(['Hello']);
     });
 
     it('is no-op for no placeholder values provided', () => {
       const result = formatReactString('Hello {name}');
 
-      expect(result.props.children).to.deep.equal([
+      expect(result.props.children).toEqual([
         'Hello ',
         '{name}',
       ]);
@@ -91,7 +91,7 @@ describe('formatter', () => {
         nameTwo: <span>Bob</span>,
       });
 
-      expect(result.props.children).to.deep.equal([
+      expect(result.props.children).toEqual([
         'Hello ',
         '{name}',
       ]);
@@ -101,7 +101,7 @@ describe('formatter', () => {
       const result = formatReactString('Hello {name}', '',
         { name: <span>Bob</span> });
 
-      expect(result.props.children).to.deep.equal([
+      expect(result.props.children).toEqual([
         'Hello ',
         <span>Bob</span>,
       ]);
@@ -112,7 +112,7 @@ describe('formatter', () => {
         name: <span>Bob</span>,
       });
 
-      expect(result.props.children).to.deep.equal([
+      expect(result.props.children).toEqual([
         'Hello ',
         <span>Bob</span>,
         ', are you ',
@@ -127,7 +127,7 @@ describe('formatter', () => {
         nameTwo: <span>Joe</span>,
       });
 
-      expect(result.props.children).to.deep.equal([
+      expect(result.props.children).toEqual([
         'Hello ',
         <span>Bob</span>,
         ', is that ',
@@ -142,7 +142,7 @@ describe('formatter', () => {
         nameTwo: <span>Joe</span>,
       });
 
-      expect(result.props.children).to.deep.equal([
+      expect(result.props.children).toEqual([
         <span>Bob</span>,
         '? ',
         <span>Bob</span>,
@@ -160,7 +160,7 @@ describe('formatter', () => {
         nameTwo: <span>Joe</span>,
       });
 
-      expect(result.props.children).to.deep.equal([
+      expect(result.props.children).toEqual([
         'Hello ',
         '{name}',
         ' and ',
@@ -173,7 +173,7 @@ describe('formatter', () => {
         name: index => <span key={index}>Bob</span>,
       });
 
-      expect(result.props.children).to.deep.equal([
+      expect(result.props.children).toEqual([
         <span key={0}>Bob</span>,
         ' & ',
         <span key={2}>Bob</span>,
@@ -185,21 +185,21 @@ describe('formatter', () => {
         name: () => 'Hello',
       });
 
-      expect(result.props.children).to.deep.equal(['{name}', ' & ', '{name}']);
+      expect(result.props.children).toEqual(['{name}', ' & ', '{name}']);
     });
 
     it('renders in a span container with localized-string class', () => {
       const result = formatReactString('Hello');
 
-      expect(result.type).to.equal('span');
-      expect(result.props.className).to.contain('localized-string');
+      expect(result.type).toEqual('span');
+      expect(result.props.className).toMatch('localized-string');
     });
 
     it('renders additional class on the span container', () => {
       const result = formatReactString('Hello', 'some-class');
 
-      expect(result.type).to.equal('span');
-      expect(result.props.className).to.equal('localized-string some-class');
+      expect(result.type).toEqual('span');
+      expect(result.props.className).toEqual('localized-string some-class');
     });
   });
 });
