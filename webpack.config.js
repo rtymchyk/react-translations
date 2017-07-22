@@ -3,11 +3,11 @@ module.exports = {
   output: {
     library: 'react-translations',
     libraryTarget: 'commonjs2',
-    filename: 'built.js'
+    filename: 'built.js',
   },
   externals: {
     react: 'react',
-    jed: 'jed'
+    jed: 'jed',
   },
   module: {
     rules: [
@@ -16,15 +16,8 @@ module.exports = {
         exclude: /node_modules/,
         use: [{
           loader: 'babel-loader',
-          options: {
-            plugins: [
-              'syntax-export-extensions',
-              'transform-object-rest-spread'
-            ],
-            presets: ['es2015', 'react']
-          }
         }],
-      }
-    ]
-  }
+      },
+    ],
+  },
 }
