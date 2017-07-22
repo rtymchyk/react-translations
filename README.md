@@ -5,7 +5,7 @@ Modern gettext-style translations for React. Isomorphic app friendly.
 Wraps [Jed](https://github.com/messageformat/Jed) to perform gettext-style string mapping, and formats placeholders into the string from props.
 
 ## Usage
-Can be used in a verbose style:
+React verbose style:
 ```javascript
 import { Message } from 'react-translations'
 
@@ -28,12 +28,19 @@ import { Message } from 'react-translations'
   context="Homepage"
   comment="Here's a comment for the translator" />
 ```
-Or in a short(er) form style:
+
+React short-form style:
 ```javascript
 import { _, _n, _c, _nc, Message } from 'react-translations'
 
-// Plural form
 <Message i18n={_('You have one cat!, You have many cats!', 1)} />
+```
+
+Vanilla:
+```javascript
+import { _, _n, _c, _nc, Message } from 'react-translations'
+
+const someString = _('Hello World!')(locale)
 ```
 
 ## Setup
