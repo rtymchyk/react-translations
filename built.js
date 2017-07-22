@@ -633,6 +633,9 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 exports.default = Message;
 
 var _propTypes = __webpack_require__(4);
@@ -683,7 +686,8 @@ function Message(props, _ref) {
     throw new Error('Message has neither id nor i18n as a prop!');
   }
 
-  return (0, _formatter.formatReactString)((0, _formatter.formatString)(translate(), placeholders), className, placeholders);
+  var builtPlaceholders = _extends({}, placeholders, { count: count });
+  return (0, _formatter.formatReactString)((0, _formatter.formatString)(translate(), builtPlaceholders), className, builtPlaceholders);
 }
 
 Message.displayName = 'Message';

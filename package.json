@@ -1,7 +1,7 @@
 {
   "name": "react-translations",
   "version": "0.0.2",
-  "description": "gettext-style translations for React",
+  "description": "modern gettext-style translations for React",
   "main": "built.js",
   "scripts": {
     "test": "jest",
@@ -48,14 +48,14 @@
     "eslint-plugin-standard": "^3.0.1",
     "jest": "^20.0.4",
     "react-addons-test-utils": "^15.6.0",
+    "react-dom": "^15.6.1",
     "react-test-renderer": "^15.6.1",
     "webpack": "^3.3.0"
   },
   "dependencies": {
     "jed": "^1.1.1",
     "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react": "^15.6.1"
   },
   "jest": {
     "roots": [
