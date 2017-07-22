@@ -91,4 +91,11 @@ describe('Message', () => {
       render()
     }).toThrow('Message has neither id nor i18n as a prop!')
   })
+
+  it('allows using count for plurality and for placeholder', () => {
+    const output = render({ id: 'One', idPlural: '{count}!', count: 5, context: 'Context' })
+
+    expect(Gettext._nc).toHaveBeenCalledWith('One', '{count}!', 5, 'Context')
+    expect(output.text()).toEqual('5!')
+  })
 })

@@ -38,8 +38,9 @@ export default function Message (props, { locale }) {
     throw new Error('Message has neither id nor i18n as a prop!')
   }
 
+  const builtPlaceholders = { ...placeholders, count }
   return formatReactString(
-    formatString(translate(), placeholders), className, placeholders)
+    formatString(translate(), builtPlaceholders), className, builtPlaceholders)
 }
 
 Message.displayName = 'Message'
