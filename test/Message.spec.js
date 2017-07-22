@@ -7,7 +7,7 @@ import * as Gettext from 'gettext'
 describe('Message', () => {
   const defaultLocale = 'en-US'
 
-  function render(props, locale = defaultLocale) {
+  function render (props, locale = defaultLocale) {
     return shallow(<Message {...props} />, { context: { locale } })
   }
 
@@ -67,7 +67,7 @@ describe('Message', () => {
     const output = render({ id: 'Hello {name}', name: <span key="1">Bob</span> })
 
     expect(output.text()).toBe('Hello Bob')
-    expect(output.containsAllMatchingElements(['Hello ', <span>Bob</span>]))
+    expect(output.containsAllMatchingElements(['Hello ', <span key="1">Bob</span>]))
       .toBe(true)
   })
 
@@ -81,7 +81,7 @@ describe('Message', () => {
     expect(output.text()).toBe('Hello Bob, are you 10?')
     expect(output.containsAllMatchingElements([
       'Hello ',
-      <span>Bob</span>,
+      <span key="2">Bob</span>,
       ', are you 10?',
     ])).toEqual(true)
   })

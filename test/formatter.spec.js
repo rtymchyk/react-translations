@@ -1,3 +1,4 @@
+/* eslint react/jsx-key:0 */
 import React from 'react'
 import { formatString, formatReactString } from 'formatter'
 
@@ -26,14 +27,13 @@ describe('formatter', () => {
 
     it('formats multiple placeholders appearing once', () => {
       expect(formatString('Hello {name}, is that {nameTwo}?', {
-        name: 'Bob', nameTwo: 'Joe'
+        name: 'Bob', nameTwo: 'Joe',
       })).toBe('Hello Bob, is that Joe?')
     })
 
     it('formats multiple placeholders appearing multiple times', () => {
       expect(formatString('{name}? {name}! Is that {nameTwo}? Oh it is {nameTwo}!',
-        { name: 'Bob', nameTwo: 'Joe' })).toBe(
-          'Bob? Bob! Is that Joe? Oh it is Joe!')
+        { name: 'Bob', nameTwo: 'Joe' })).toBe('Bob? Bob! Is that Joe? Oh it is Joe!')
     })
 
     it('ignores some falsy placeholders', () => {
@@ -169,8 +169,9 @@ describe('formatter', () => {
     })
 
     it('permits functions that evaluate to React elements', () => {
+      const DummyComponent = index => <span key={index}>Bob</span>
       const result = formatReactString('{name} & {name}', '', {
-        name: index => <span key={index}>Bob</span>,
+        name: DummyComponent,
       })
 
       expect(result.props.children).toEqual([
