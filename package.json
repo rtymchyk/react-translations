@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "test-watch": "jest --watch",
+    "test-ci": "jest --coverage && codecov",
     "build": "webpack --config webpack.config.js",
     "lint": "eslint ."
   },
@@ -37,6 +38,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
+    "codecov": "^2.2.0",
     "enzyme": "^2.9.1",
     "eslint": "^4.3.0",
     "eslint-config-react": "^1.1.7",
