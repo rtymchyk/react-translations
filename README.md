@@ -1,4 +1,4 @@
-# react-translations [![npm version](https://badge.fury.io/js/react-translations.svg)](https://badge.fury.io/js/react-translations) [![CircleCI](https://circleci.com/gh/rtymchyk/react-translations.svg?style=shield)](https://circleci.com/gh/rtymchyk/react-translations) [![David](https://david-dm.org/rtymchyk/react-translations.svg)](https://david-dm.org/rtymchyk/react-translations)
+# react-translations [![npm version](https://badge.fury.io/js/react-translations.svg)](https://badge.fury.io/js/react-translations) [![CircleCI](https://circleci.com/gh/rtymchyk/react-translations.svg?style=shield)](https://circleci.com/gh/rtymchyk/react-translations) [![codecov](https://codecov.io/gh/rtymchyk/react-translations/branch/master/graph/badge.svg)](https://codecov.io/gh/rtymchyk/react-translations) [![David](https://david-dm.org/rtymchyk/react-translations.svg)](https://david-dm.org/rtymchyk/react-translations)
 Modern gettext-style translations for React. Lightweight and isomorphic app friendly.
 
 ## Description
