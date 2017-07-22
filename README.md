@@ -1,4 +1,4 @@
-# react-translations
+# react-translations [![npm version](https://badge.fury.io/js/react-translations.svg)](https://badge.fury.io/js/react-translations) [![CircleCI](https://circleci.com/gh/rtymchyk/react-translations.svg?style=shield)](https://circleci.com/gh/rtymchyk/react-translations)
 Modern gettext-style translations for React. Isomorphic app friendly.
 
 ## Description
