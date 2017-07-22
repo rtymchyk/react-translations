@@ -1,6 +1,6 @@
-import Jed from 'jed';
+import Jed from 'jed'
 
-let jed;
+let jed
 
 const defaultOptions = {
   domain: 'en-US',
@@ -13,20 +13,20 @@ const defaultOptions = {
       },
     },
   },
-};
+}
 
 export function setMessages(messages) {
-  jed = new Jed(Object.assign({}, defaultOptions, messages));
+  jed = new Jed(Object.assign({}, defaultOptions, messages))
 }
 
 export function clearInstance() {
-  jed = undefined;
+  jed = undefined
 }
 
 export function getInstance() {
   if (!jed) {
-    throw new Error('Translator has not been initialized with data');
+    throw new Error('Translator has not been initialized with data')
   }
 
-  return jed;
+  return jed
 }
