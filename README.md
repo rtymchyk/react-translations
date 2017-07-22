@@ -1,25 +1,35 @@
 # react-translations [![npm version](https://badge.fury.io/js/react-translations.svg)](https://badge.fury.io/js/react-translations) [![CircleCI](https://circleci.com/gh/rtymchyk/react-translations.svg?style=shield)](https://circleci.com/gh/rtymchyk/react-translations)
-Modern gettext-style translations for React. Isomorphic app friendly.
+Modern gettext-style translations for React. Lightweight and isomorphic app friendly.
 
 ## Description
-Wraps [Jed](https://github.com/messageformat/Jed) to perform gettext-style string mapping, and formats placeholders into the string from props.
+This library wraps [Jed](https://github.com/messageformat/Jed) to perform gettext-style string mapping, and performs formatting of placeholders into translated strings from provided props.
 
 ## Usage
-React verbose style:
+### Component Verbose Style
 ```javascript
 import { Message } from 'react-translations'
+```
 
-// Singular form
+#### Singular form
+```javascript
 <Message id="Hello World!" />
-// Singular form with context
+```
+
+#### Singular form with context
+```javascript
 <Message id="Flag" context="Physical object" />
-// Plural form
+```
+#### Plural form
+```javascript
 <Message
   id="You have one cat!"
   idPlural="You have {numCats} cats!"
   count={1}
   numCats="1" />
-// Plural form with context and comment
+```
+
+#### Plural form with context and translator comment
+```javascript
 <Message
   id="You have {numCats} car!"
   idPlural="You have {numCats} cars!"
@@ -29,16 +39,16 @@ import { Message } from 'react-translations'
   comment="Here's a comment for the translator" />
 ```
 
-React short-form style:
+### Component Shortform Style
 ```javascript
 import { _, _n, _c, _nc, Message } from 'react-translations'
-
 <Message i18n={_('You have one cat!, You have many cats!', 1)} />
+...
 ```
 
-Vanilla:
+### Vanilla JS
 ```javascript
-import { _, _n, _c, _nc, Message } from 'react-translations'
+import { _, _n, _c, _nc } from 'react-translations'
 
 const someString = _('Hello World!')(locale)
 ```
@@ -51,16 +61,15 @@ setMessage({ ... })
 ```
 The shape of this object is specific to [Jed](http://messageformat.github.io/Jed/). You can use tools to generate this format automatically (see FAQ).
 
-
-Now, wrap your root component in a provider:
+Now, wrap your root React component with the provider:
 ```javascript
 import { LocaleProvider } from 'react-translations'
 return <LocaleProvider locale={locale}><App/></LocaleProvider>
 ```
-The user's locale must be provided and determines the translations.
+The user's locale must be provided and will be used to determine the translations.
 
 ## Placeholders
-Placeholders like `numCats` above can be any **standard JS type**, as well as **React nodes**, or **stateless component functions**. 
+Placeholders like `numCats` above can be **standard JS types**, as well as **React nodes**, or **stateless component functions**. 
 
 Note that `count` can be used to determine plurality, and function as a placeholder. So the above example could be simplified to:
 ```javascript
