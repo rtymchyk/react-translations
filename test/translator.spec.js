@@ -17,9 +17,9 @@ describe('translator', () => {
       const instanceOne = getInstance()
       const instanceTwo = getInstance()
 
-      expect(instanceOne).not.toEqual(undefined)
-      expect(instanceTwo).not.toEqual(undefined)
-      expect(instanceOne).toEqual(instanceTwo)
+      expect(instanceOne).not.toBeUndefined()
+      expect(instanceTwo).not.toBeUndefined()
+      expect(instanceOne).toBe(instanceTwo)
     })
   })
 

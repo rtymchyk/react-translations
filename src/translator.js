@@ -16,7 +16,7 @@ const defaultOptions = {
 }
 
 export function setMessages(messages) {
-  jed = new Jed(Object.assign({}, defaultOptions, messages))
+  jed = new Jed({ ...defaultOptions, ...messages })
 }
 
 export function clearInstance() {

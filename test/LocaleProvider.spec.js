@@ -15,6 +15,6 @@ describe('LocaleProvider', () => {
       </LocaleProvider>
     )
 
-    expect(root.find(TestComponent).text()).toEqual('fr-FR')
+    expect(root.find(TestComponent).text()).toBe('fr-FR')
   })
 })
