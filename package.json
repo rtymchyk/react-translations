@@ -1,6 +1,6 @@
 {
   "name": "react-translations",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "modern gettext-style translations for React",
   "main": "built.js",
   "scripts": {
