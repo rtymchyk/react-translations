@@ -1,5 +1,5 @@
 import React from 'react'
-import { formatString, formatReactString } from '../src/formatter'
+import { formatString, formatReactString } from 'formatter'
 
 describe('formatter', () => {
   describe('#formatString', () => {

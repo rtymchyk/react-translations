@@ -1,4 +1,4 @@
-import { getInstance, clearInstance, setMessages } from '../src/translator'
+import { getInstance, clearInstance, setMessages } from 'translator'
 
 describe('translator', () => {
   beforeEach(() => {

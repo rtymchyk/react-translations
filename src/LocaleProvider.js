@@ -1,12 +1,13 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default class LocaleProvider extends React.Component {
-  getChildContext() {
+  getChildContext () {
     const { locale } = this.props
     return { locale }
   }
 
-  render() {
+  render () {
     return React.Children.only(this.props.children)
   }
 }
@@ -14,10 +15,10 @@ export default class LocaleProvider extends React.Component {
 LocaleProvider.displayName = 'LocaleProvider'
 
 LocaleProvider.propTypes = {
-  locale: React.PropTypes.string.isRequired,
-  children: React.PropTypes.node,
+  locale: PropTypes.string.isRequired,
+  children: PropTypes.node,
 }
 
 LocaleProvider.childContextTypes = {
-  locale: React.PropTypes.string.isRequired,
+  locale: PropTypes.string.isRequired,
 }

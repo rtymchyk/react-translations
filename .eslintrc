@@ -1,29 +1,17 @@
 {
-  "extends": "airbnb",
+  "extends": [
+    "standard",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "standard",
+    "react"
+  ],
   "parser": "babel-eslint",
-  "globals": {
-    "describe": true,
-    "it": true,
-    "expect": true,
-    "beforeEach": true,
-    "afterEach": true,
-    "fail": true
-  },
   "env": {
     "jest": true
   },
   "rules": {
-    "comma-dangle": ["error", {
-        "arrays": "only-multiline",
-        "objects": "only-multiline",
-        "imports": "only-multiline",
-        "exports": "only-multiline",
-        "functions": "ignore"
-    }],
-    "semi": [2, "never"],
-    "react/jsx-filename-extension": ["error", { "extensions": [".js"] }],
-    "react/require-default-props": "off",
-    "no-underscore-dangle": "off",
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}]
+    "comma-dangle": ["error", "always-multiline"]
   }
 }

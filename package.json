@@ -14,7 +14,13 @@
     "url": "git+https://github.com/rtymchyk/react-translations.git"
   },
   "keywords": [
-    "react", "translations", "i18n", "translate", "gettext", "icu", "messageformat"
+    "react",
+    "translations",
+    "i18n",
+    "translate",
+    "gettext",
+    "icu",
+    "messageformat"
   ],
   "files": [
     "built.js"
@@ -26,29 +32,38 @@
   },
   "homepage": "https://github.com/rtymchyk/react-translations#readme",
   "devDependencies": {
-    "babel-core": "^6.22.1",
-    "babel-eslint": "^6.1.2",
+    "babel-eslint": "^7.2.3",
     "babel-extract-gettext": "^0.1.0",
-    "babel-loader": "^6.2.10",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-syntax-export-extensions": "^6.13.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-es2015": "^6.22.0",
-    "babel-preset-react": "^6.22.0",
-    "babel-preset-stage-3": "^6.22.0",
-    "enzyme": "^2.7.1",
-    "eslint": "^3.17.0",
-    "eslint-config-airbnb": "^14.1.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.0",
-    "react-addons-test-utils": "^15.4.2",
-    "webpack": "^2.2.1"
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^2.9.1",
+    "eslint": "^4.3.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^20.0.4",
+    "react-addons-test-utils": "^15.6.0",
+    "react-test-renderer": "^15.6.1",
+    "webpack": "^3.3.0"
   },
   "dependencies": {
     "jed": "^1.1.1",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src/",
+      "<rootDir>/test/"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "./src"
+    ]
   }
 }

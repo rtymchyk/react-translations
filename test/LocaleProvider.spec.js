@@ -1,10 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { mount } from 'enzyme'
-import LocaleProvider from '../src/LocaleProvider'
+import LocaleProvider from 'LocaleProvider'
 
 const TestComponent = (props, { locale }) => <div>{locale}</div>
 TestComponent.contextTypes = {
-  locale: React.PropTypes.string.isRequired,
+  locale: PropTypes.string.isRequired,
 }
 
 describe('LocaleProvider', () => {

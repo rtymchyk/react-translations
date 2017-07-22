@@ -2,7 +2,7 @@ import React from 'react'
 
 const PLACEHOLDER_REGEX = new RegExp('[{}]', 'g')
 
-export function formatString(string, placeholders = {}) {
+export function formatString (string, placeholders = {}) {
   let builtString = string
 
   Object.keys(placeholders).forEach((placeholderKey) => {
@@ -19,7 +19,7 @@ export function formatString(string, placeholders = {}) {
   return builtString
 }
 
-export function formatReactString(string, className, placeholders = {}) {
+export function formatReactString (string, className, placeholders = {}) {
   return (
     <span className={`localized-string ${className || ''}`}>
       {string

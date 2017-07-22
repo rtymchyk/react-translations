@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Message from '../src/Message'
-import { setMessages } from '../src/translator'
-import * as Gettext from '../src/gettext'
+import Message from 'Message'
+import { setMessages } from 'translator'
+import * as Gettext from 'gettext'
 
 describe('Message', () => {
   const defaultLocale = 'en-US'

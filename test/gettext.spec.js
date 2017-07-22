@@ -1,5 +1,5 @@
-import { setMessages } from '../src/translator'
-import { _, _c, _n, _nc } from '../src/gettext'
+import { setMessages } from 'translator'
+import { _, _c, _n, _nc } from 'gettext'
 
 describe('gettext', () => {
   beforeEach(() => {

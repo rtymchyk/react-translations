@@ -1,8 +1,8 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 import { _, _c, _n, _nc } from './gettext'
 import { formatString, formatReactString } from './formatter'
 
-export default function Message(props, { locale }) {
+export default function Message (props, { locale }) {
   const {
     id,
     idPlural,
@@ -12,10 +12,10 @@ export default function Message(props, { locale }) {
     children,
     className,
     i18n,
-    ...placeholders,
+    ...placeholders
   } = props
 
-  function translate() {
+  function translate () {
     if (i18n) {
       return i18n(locale)
     }
@@ -45,13 +45,13 @@ export default function Message(props, { locale }) {
 Message.displayName = 'Message'
 
 Message.propTypes = {
-  id: React.PropTypes.string,
-  idPlural: React.PropTypes.string,
-  count: React.PropTypes.number,
-  context: React.PropTypes.string,
-  i18n: React.PropTypes.func,
+  context: PropTypes.string,
+  count: PropTypes.number,
+  i18n: PropTypes.func,
+  id: PropTypes.string,
+  idPlural: PropTypes.string,
 }
 
 Message.contextTypes = {
-  locale: React.PropTypes.string,
+  locale: PropTypes.string,
 }

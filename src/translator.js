@@ -15,15 +15,15 @@ const defaultOptions = {
   },
 }
 
-export function setMessages(messages) {
+export function setMessages (messages) {
   jed = new Jed({ ...defaultOptions, ...messages })
 }
 
-export function clearInstance() {
+export function clearInstance () {
   jed = undefined
 }
 
-export function getInstance() {
+export function getInstance () {
   if (!jed) {
     throw new Error('Translator has not been initialized with data')
   }
