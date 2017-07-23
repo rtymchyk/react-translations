@@ -6,7 +6,11 @@ Modern gettext-style translations for React. Lightweight and isomorphic app frie
 ## Description
 This library wraps [Jed](https://github.com/messageformat/Jed) to perform gettext-style string mapping, and performs formatting of placeholders into translated strings from provided props.
 
+## Example
+A complete example client (React) and server (Express.JS) setup, with build chain (Gulp), is available at [react-translations-demo](https://github.com/rtymchyk/react-translations-demo)!
+
 ## Usage
+
 ### Component Verbose Style
 ```javascript
 import { Message } from 'react-translations'
@@ -90,3 +94,7 @@ You can use [po2json](https://www.npmjs.com/package/po2json) to do the conversio
 3. *When/where should the above things run?*
 
 It depends on your build chain. If you are friendly with [gulp](https://www.npmjs.com/package/gulp), it can be used easily with [gulp-po2json](https://www.npmjs.com/package/gulp-po2json) to do imports. Exports can be achieved with [gulp-babel](https://www.npmjs.com/package/gulp-babel) and the previously named babel plugin.
+
+4. *Where can I see an example of how to support server rendering, build chain, \<insert X\>?*
+
+Check out [react-translations-demo](https://github.com/rtymchyk/react-translations-demo)!
