@@ -63,21 +63,21 @@ const someString = _('Hello World!')(locale)
 Set the available translations on the client (and server if you perform SSR):
 ```javascript
 import { setMessages } from 'react-translations'
-setMessage({ ... })
+setMessages({ ... })
 ```
-The shape of this object is specific to [Jed](http://messageformat.github.io/Jed/). You can use tools to generate this format automatically (see FAQ).
+You want to set this before you perform any rendering. On the client this may be start of a webpack entry. On the server, during boot. The shape of this object is specific to [Jed](http://messageformat.github.io/Jed/). You can use tools to generate this format automatically (see FAQ). 
 
-Now, wrap your root React component with the provider:
+Wrap your root React component with the provider:
 ```javascript
 import { LocaleProvider } from 'react-translations'
 return <LocaleProvider locale={locale}><App/></LocaleProvider>
 ```
-The user's locale must be provided and will be used to determine the translations.
+The user's locale (combination of language and region) must be provided and will be used to determine the translations based on one of the keys in the object passed to `setMessages` earlier. How you detect a user's locale is completely up to you.
 
 ## Placeholders
 Placeholders like `numCats` above can be **standard JS types**, as well as **React nodes**, or **stateless component functions**. 
 
-Note that `count` can be used to determine plurality, and function as a placeholder. So the above example could be simplified to:
+Note that `count` can be used to determine plurality, and function as a placeholder. So if you don't care about additonal formatting of numbers, the above example could be simplified to:
 ```javascript
 <Message id="You have one cat!" idPlural="You have {count} cars!" count={1000} />
 ```
