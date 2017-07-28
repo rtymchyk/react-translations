@@ -1,10 +1,10 @@
 # react-translations
-Modern gettext-style translations for React. Lightweight and isomorphic app friendly.
+Modern translations for React. Lightweight and isomorphic app friendly.
 
 [![npm version](https://badge.fury.io/js/react-translations.svg)](https://badge.fury.io/js/react-translations) [![CircleCI](https://circleci.com/gh/rtymchyk/react-translations.svg?style=shield)](https://circleci.com/gh/rtymchyk/react-translations) [![codecov](https://codecov.io/gh/rtymchyk/react-translations/branch/master/graph/badge.svg)](https://codecov.io/gh/rtymchyk/react-translations) [![David](https://david-dm.org/rtymchyk/react-translations.svg)](https://david-dm.org/rtymchyk/react-translations)
 
-## Description
-This library wraps [Jed](https://github.com/messageformat/Jed) to perform gettext-style string mapping, and performs formatting of placeholders into translated strings from provided props.
+## Translation Format
+This library uses **gettext** as the translation style, and thus relies on **PO** file format for storing translations. Gettext has been battle tested, and the **PO** format is very familiar to translators. The system is simple to use and allows the developer to continue building out UIs in the English language, with an almost complete isolation to the rest of the internationalization process. Read more information [here](https://developer.mozilla.org/en-US/docs/gettext).
 
 ## Example
 A complete example client (React) and server (Express.JS) setup, with build chain (Webpack & Gulp), is available at [react-translations-demo](https://github.com/rtymchyk/react-translations-demo)!
@@ -65,7 +65,7 @@ Set the available translations on the client (and server if you perform SSR):
 import { setMessages } from 'react-translations'
 setMessages({ ... })
 ```
-You want to set this before you perform any rendering. On the client this may be start of a webpack entry. On the server, during boot. The shape of this object is specific to [Jed](http://messageformat.github.io/Jed/). You can use tools to generate this format automatically (see FAQ). 
+You want to set this before you perform any rendering. On the client this may be start of a webpack entry. On the server, during boot. The shape of this object is specific to [Jed](http://messageformat.github.io/Jed/), which is what is used to do the gettext mapping. You can use tools to generate this format automatically (see FAQ). 
 
 Wrap your root React component with the provider:
 ```javascript
@@ -75,7 +75,7 @@ return <LocaleProvider locale={locale}><App/></LocaleProvider>
 The user's locale (combination of language and region) must be provided and will be used to determine the translations based on one of the keys in the object passed to `setMessages` earlier. How you detect a user's locale is completely up to you.
 
 ## Placeholders
-Placeholders like `numCats` above can be **standard JS types**, as well as **React nodes**, or **stateless component functions**. 
+Placeholders like `numCats` above can be **standard JS types** or **React elements**.
 
 Note that `count` can be used to determine plurality, and function as a placeholder. So if you don't care about additonal formatting of numbers, the above example could be simplified to:
 ```javascript
