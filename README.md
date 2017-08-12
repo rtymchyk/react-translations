@@ -98,3 +98,6 @@ It depends on your build chain. If you are friendly with [gulp](https://www.npmj
 4. *Where can I see an example of how to support server rendering, build chain, \<insert X\>?*
 
 Check out [react-translations-demo](https://github.com/rtymchyk/react-translations-demo)!
+
+## Acknowledgements
+Thanks to the author of [Jed](https://github.com/messageformat/Jed). Not only for the library itself, but also for inspiration to continue driving internalization and translations forward in the JS community.
