@@ -34,7 +34,7 @@ export function formatReactString (string, className, placeholders = {}) {
           }
 
           if (placeholderValue && React.isValidElement(placeholderValue)) {
-            return placeholderValue
+            return React.cloneElement(placeholderValue, { key: index })
           }
 
           return node

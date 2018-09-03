@@ -74,7 +74,7 @@ describe('Message', () => {
   it('formats both types of placeholders', () => {
     const output = render({
       id: 'Hello {name}, are you {age}?',
-      name: <span>Bob</span>,
+      name: <span key={1}>Bob</span>,
       age: '10',
     })
 
