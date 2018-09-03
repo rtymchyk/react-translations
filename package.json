@@ -32,6 +32,10 @@
     "url": "https://github.com/rtymchyk/react-translations/issues"
   },
   "homepage": "https://github.com/rtymchyk/react-translations#readme",
+  "dependencies": {
+    "jed": "^1.1.1",
+    "prop-types": "^15.6.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
@@ -50,9 +54,7 @@
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-react": "^7.1.0",
     "eslint-plugin-standard": "^4.0.0",
-    "jed": "^1.1.1",
     "jest": "^23.5.0",
-    "prop-types": "^15.6.2",
     "raf": "^3.4.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
@@ -61,8 +63,6 @@
     "webpack-cli": "^3.1.0"
   },
   "peerDependencies": {
-    "jed": ">1.0.0",
-    "prop-types": ">15.5.0",
     "react": ">=15.0.0"
   },
   "jest": {
