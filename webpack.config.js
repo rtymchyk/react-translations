@@ -8,8 +8,6 @@ module.exports = {
   },
   externals: {
     react: 'react',
-    jed: 'jed',
-    'prop-types': 'PropTypes',
   },
   module: {
     rules: [
