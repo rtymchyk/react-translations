@@ -169,7 +169,7 @@ describe('formatter', () => {
     })
 
     it('permits functions that evaluate to React elements', () => {
-      const DummyComponent = () => <span>Bob</span>
+      const DummyComponent = (index) => <span key={index}>Bob</span>
       const result = formatReactString('{name} & {name}', '', {
         name: DummyComponent,
       })
