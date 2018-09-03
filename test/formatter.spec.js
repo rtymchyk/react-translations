@@ -103,7 +103,7 @@ describe('formatter', () => {
 
       expect(result.props.children).toEqual([
         'Hello ',
-        <span>Bob</span>,
+        <span key={1}>Bob</span>,
       ])
     })
 
@@ -114,9 +114,9 @@ describe('formatter', () => {
 
       expect(result.props.children).toEqual([
         'Hello ',
-        <span>Bob</span>,
+        <span key={1}>Bob</span>,
         ', are you ',
-        <span>Bob</span>,
+        <span key={3}>Bob</span>,
         '?',
       ])
     })
@@ -129,9 +129,9 @@ describe('formatter', () => {
 
       expect(result.props.children).toEqual([
         'Hello ',
-        <span>Bob</span>,
+        <span key={1}>Bob</span>,
         ', is that ',
-        <span>Joe</span>,
+        <span key={3}>Joe</span>,
         '?',
       ])
     })
@@ -143,13 +143,13 @@ describe('formatter', () => {
       })
 
       expect(result.props.children).toEqual([
-        <span>Bob</span>,
+        <span key={0}>Bob</span>,
         '? ',
-        <span>Bob</span>,
+        <span key={2}>Bob</span>,
         '! Is that ',
-        <span>Joe</span>,
+        <span key={4}>Joe</span>,
         '? Oh ',
-        <span>Joe</span>,
+        <span key={6}>Joe</span>,
         '!',
       ])
     })
@@ -164,12 +164,12 @@ describe('formatter', () => {
         'Hello ',
         '{name}',
         ' and ',
-        <span>Joe</span>,
+        <span key={3}>Joe</span>,
       ])
     })
 
     it('permits functions that evaluate to React elements', () => {
-      const DummyComponent = index => <span key={index}>Bob</span>
+      const DummyComponent = (index) => <span key={index}>Bob</span>
       const result = formatReactString('{name} & {name}', '', {
         name: DummyComponent,
       })
