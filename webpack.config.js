@@ -1,5 +1,6 @@
 module.exports = {
   entry: './index.js',
+  mode: 'production',
   output: {
     library: 'react-translations',
     libraryTarget: 'commonjs2',
@@ -8,6 +9,7 @@ module.exports = {
   externals: {
     react: 'react',
     jed: 'jed',
+    'prop-types': 'PropTypes',
   },
   module: {
     rules: [
